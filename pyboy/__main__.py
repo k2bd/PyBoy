@@ -5,9 +5,13 @@
 #
 
 import argparse
+import json
 import os
+import socket
+import sys
 
 from pyboy import PyBoy, core
+import pyboy
 from pyboy.logger import log_level, logger
 from pyboy.plugins.manager import parser_arguments
 from pyboy.pyboy import defaults
@@ -137,8 +141,29 @@ See "pyboy --help" for how to enable rewind and other awesome features!
         with open(state_path, "rb") as f:
             pyboy.load_state(f)
 
-    while not pyboy.tick():
-        pass
+    frame = 0
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect(("127.0.0.1", 55722))
+
+        while not pyboy.tick():
+            frame += 1
+
+            ram_data = [
+                {
+                    "location": addr,
+                    "value": pyboy.get_memory_value(addr),
+                }
+                for addr in range(0xFFFF)
+            ]
+            ram_json = {
+                "frame": frame,
+                "ram_data": ram_data,
+            }
+
+            encoded = json.dumps(ram_json).encode("utf-8")
+            len_byte = len(encoded).to_bytes(8, sys.byteorder)
+            print(len(encoded))
+            s.sendall(len_byte + encoded)
 
     pyboy.stop()
 
