@@ -154,7 +154,7 @@ See "pyboy --help" for how to enable rewind and other awesome features!
                         "location": addr,
                         "value": pyboy.get_memory_value(addr),
                     }
-                    for addr in range(0xFFFF)
+                    for addr in range(0xD2F7, 0xD31D)  # Temp - pokemon seen/owned in RED
                 ]
                 ram_json = {
                     "frame": frame,
