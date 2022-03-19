@@ -29,7 +29,7 @@ The instructions are simple, if you already have a functioning Python environmen
 
  2. Install PyBoy using __`pip install pyboy`__ (add __` --user`__ if your system asks)
 
-On Windows you may need to set SDL2 on your path. For Windows git bash that looks like:
+(Kevin note) On Windows you may need to set SDL2 on your path. For Windows git bash that looks like:
 ```
 export PATH=$PATH:/c/SDL2/SDL2-2.0.10/lib/x64
 export PYSDL2_DLL_PATH=/c/SDL2/SDL2-2.0.10/lib/x64
