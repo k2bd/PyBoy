@@ -27,7 +27,7 @@ The instructions are simple, if you already have a functioning Python environmen
     - Fedora: __`sudo dnf install SDL2-devel`__
     - macOS: __`brew install sdl2`__
 
- 2. Install PyBoy using __`pip install pyboy`__ (add __` --user`__ if your system asks)
+ 2. Install PyBoy using __`pip install -e .`
 
 (Kevin note) On Windows you may need to set SDL2 on your path. For Windows git bash that looks like:
 ```
