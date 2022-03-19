@@ -29,6 +29,10 @@ The instructions are simple, if you already have a functioning Python environmen
 
  2. Install PyBoy using __`pip install pyboy`__ (add __` --user`__ if your system asks)
 
+Windows git bash:
+export PATH=$PATH:/c/SDL2/SDL2-2.0.10/lib/x64
+export PYSDL2_DLL_PATH=/c/SDL2/SDL2-2.0.10/lib/x64
+
 Now you're ready! Either use PyBoy directly from the terminal __`$ pyboy file.rom`__ or use it in your Python scripts:
 ```python
 from pyboy import PyBoy
